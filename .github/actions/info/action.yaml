@@ -1,0 +1,12 @@
+name: 'Info'
+description: 'Print Build Info Using Javascript'
+inputs:
+  fields:
+    description: 'Fields in the context payload to print out. Comma separated. Empty prints entire payload'
+    required: false
+outputs:
+  time:
+    description: 'The time at which info was printed'
+runs:
+  using: 'node20'
+  main: 'index.js'

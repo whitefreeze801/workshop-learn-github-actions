@@ -23,6 +23,11 @@ jobs:
         with:
           path: public
 
+      - name: Info
+        uses: ./.github/actions/info
+        with:
+          fields: "ref,pusher"
+
       - name: Deploy
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/init'
         uses: peaceiris/actions-gh-pages@v3
