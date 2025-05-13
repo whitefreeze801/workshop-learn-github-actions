@@ -1,0 +1,12 @@
+name: 'Count lines of code'
+description: 'Run a hugo command in a container with all the dependencies'
+inputs:
+  path:
+    description: 'Count lines of code only under the given path'
+    required: false
+    default: "."
+runs:
+  using: 'docker'
+  image: aldanial/cloc
+  args:
+    - ${{ inputs.path }}
