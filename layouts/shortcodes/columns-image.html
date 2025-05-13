@@ -1,0 +1,13 @@
+{{- $ratio := (split (.Get "ratio") ":") -}}
+<div class="book-columns flex flex-wrap{{ with .Get "class" }} {{ . }}{{ end }}" style="justify-content: center; align-items: center;">
+{{ range $index, $content := split .InnerDeindent "<--->" }}
+  {{- $grow := default 1 (index $ratio $index) -}}
+  {{- $textAlign := "inherit" }}
+  {{- if eq $index 0 }}
+    {{- $textAlign = "center" -}}
+  {{- end }}
+  <div class="flex-even markdown-inner" style="flex-grow: {{ $grow }}; text-align: {{ $textAlign }};">
+    {{ $content | safeHTML }}
+  </div>
+{{ end }}
+</div>

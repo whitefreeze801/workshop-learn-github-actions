@@ -1,0 +1,119 @@
+<script>
+    // DISCLAIMER: This is hacky code, but what did you expect? THis is a GitHub actions workshop not a "good javascript" workshop :P
+
+    // find all the code tags with class="language-bash" and tweak the styles
+    var code = document.querySelectorAll("code.language-bash");
+    for (var i = 0; i < code.length; i++) {
+        var parent = code[i].parentElement;
+        // parse the current style attribute and add a new style
+        var style = parent.getAttribute("style");
+        if (style == null) {
+            style = "";
+        }
+        parent.setAttribute("style", style + ";font-size: large;border: 1px solid #404239; filter: drop-shadow(0 0 0.5rem #404239);");
+    }
+
+    // find all the code tags with class="language-txt" and tweak the styles
+    var code = document.querySelectorAll("code.language-txt");
+    for (var i = 0; i < code.length; i++) {
+        var parent = code[i].parentElement;
+        // parse the current style attribute and add a new style
+        var style = parent.getAttribute("style");
+        if (style == null) {
+            style = "";
+        }
+        parent.setAttribute("style", style + ";background-color: #f5f5f5; color: #333");
+
+        // find all the children of the code tag thta have a style attribute
+        var children = code[i].querySelectorAll("[style]");
+        // if they have a "background-color" in the style attribute, override it
+        for (var j = 0; j < children.length; j++) {
+            var childStyle = children[j].getAttribute("style");
+            if (childStyle.indexOf("background-color") > -1) {
+                console.log("found background-color");
+                childStyle = childStyle + ";background-color: #ddd; color: #333"
+                children[j].setAttribute("style", childStyle);
+            }
+        }
+    }
+
+    // get_next_heading gets the next heading
+    get_next_heading = function(element) {
+        var next = element.nextElementSibling;
+        while (next) {
+            if (next.tagName == "H1" || next.tagName == "H2" || next.tagName == "H3" || next.tagName == "H4" || next.tagName == "H5" || next.tagName == "H6") {
+                return next;
+            }
+            next = next.nextElementSibling;
+        }
+        return null;
+    }
+
+    // find all elements with class "nextSegment" and attach a new click event to them
+    var nextSegments = document.getElementsByClassName("nextSegment");
+    for (var i = 0; i < nextSegments.length; i++) {
+        let cur = nextSegments[i];
+
+        // go up until we find the div.slide
+        let slide = cur;
+        while (slide && !slide.classList.contains("slide")) {
+            slide = slide.parentElement;
+        }
+
+        let nextHeading = get_next_heading(slide);
+
+        if (nextHeading == null) {
+            break;
+        }
+
+        cur.addEventListener("click", function() {
+            nextHeading.scrollIntoView();
+            // scroll to the heading
+            nextHeading.scrollIntoView();
+            // scroll a tiny bit further down to make things line up more
+            nextHeading.scrollBy(0, -500);
+
+            // set the url hash to the heading id
+            window.location.hash = nextHeading.id;
+        });
+
+        // append the heading text to the button, trimming trailing " #"
+        // this is lazy, but it works
+        let headingText = nextHeading.innerText;
+        if (headingText.endsWith(" #")) {
+            headingText = headingText.substring(0, headingText.length - 2);
+        }
+        cur.innerText = cur.innerText + " (" + headingText +")";
+    }
+
+    // find all elements with class "prevSegment" and attach a new click event to them
+    var prevSegment = document.getElementsByClassName("prevSegment");
+    for (var i = 0; i < prevSegment.length; i++) {
+        prevSegment[i].addEventListener("click", function() {
+            console.log("BUTTON",this);
+            // find the previous slide
+            var prev = this.parentElement.parentElement.previousElementSibling;
+            while (prev) {
+                if (prev.classList.contains("slide")) {
+                    // find the first heading before the div
+                    var heading = prev.previousElementSibling;
+                    while (heading) {
+                        if (heading.tagName == "H1" || heading.tagName == "H2" || heading.tagName == "H3" || heading.tagName == "H4" || heading.tagName == "H5" || heading.tagName == "H6") {
+                            // scroll the heading to the top of the page
+                            heading.scrollIntoView();
+
+                            // scroll a tiny bit further down to make things line up more
+                            heading.scrollBy(0, -500);
+
+                            // set the url hash to the heading id
+                            window.location.hash = heading.id;
+                            return;
+                        }
+                        heading = heading.previousElementSibling;
+                    }
+                }
+                prev = prev.previousElementSibling;
+            }
+        });
+    }
+</script>

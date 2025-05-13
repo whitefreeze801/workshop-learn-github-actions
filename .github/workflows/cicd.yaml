@@ -1,0 +1,38 @@
+name: CI/CD
+
+on: push
+
+jobs:
+  build-site:
+    name: Build Site
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: 'latest'
+          extended: true
+
+      - name: Build
+        run: |
+          # make the assets tgz users need to bootstrap the workshop
+          make workshop-assets
+
+          # there is no built-in env variable for the repo name without owner, so we have to parse it out
+          REPO_NAME=$(echo "${GITHUB_REPOSITORY}" | cut -d'/' -f2)
+          hugo --minify -b "https://${GITHUB_REPOSITORY_OWNER}.github.io/$REPO_NAME/"
+
+      - name: Deploy
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/init'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
