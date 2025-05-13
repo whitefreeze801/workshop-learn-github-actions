@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Workshop on Learn GitHub Actions</title><link>https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/</link><description>Recent content in Workshop on Learn GitHub Actions</description><generator>Hugo</generator><language>en-us</language><atom:link href="https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/index.xml" rel="self" type="application/rss+xml"/><item><title>Preamble</title><link>https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/preamble/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/preamble/</guid><description>&lt;h1 id="workshop-preamble">
+ Workshop Preamble
+ &lt;a class="anchor" href="#workshop-preamble">#&lt;/a>
+&lt;/h1>
+&lt;div class="slide">
+ &lt;div class="slide-nav">
+ 
+
+ 
+
+ 
+ &lt;a href="https://whitefreeze801.github.io/workshop-learn-github-actions/workshop" class="book-btn prevSegment">
+ Back
+ &lt;/a>
+ 
+
+ 
+ &lt;a rel="noopener" class="book-btn nextSegment" style="position: absolute; right:0">
+ Next
+ &lt;/a>
+ 
+
+ 
+ &lt;/br>
+ &lt;/div>
+
+ &lt;div class="slide-content">
+ &lt;div style="position: relative;">
+ &lt;div style="position: absolute; top: 0; right: 0;">
+ &lt;a href="https://whitefreeze801.github.io/workshop-learn-github-actions/credits#artist">
+ &lt;figure style="padding: 0; margin: 0;">
+ &lt;img src="https://whitefreeze801.github.io/workshop-learn-github-actions/art/gray-dog-icons/head.png" style="width: 3em;">
+ &lt;/figure>
+ &lt;/a>
+ &lt;/div>
+ &lt;div>
+ &lt;blockquote class="book-hint info">
+&lt;p>Serverless!&lt;/p>
+&lt;p>The workshop build process results in static assits. That allows them to be served
+as basic files out of a branch of the repository which means that no
+servers are required for you to share your deployment of the workshop.&lt;/p>
+ &lt;/div>
+&lt;/div>
+&lt;h2 id="architecture">
+ Architecture
+ &lt;a class="anchor" href="#architecture">#&lt;/a>
+&lt;/h2>
+&lt;figure class="text-center">
+ &lt;img src="https://whitefreeze801.github.io/workshop-learn-github-actions/diagrams/arch/arch.png" width="100%">
+&lt;/figure>
+&lt;h2 id="components">
+ Components
+ &lt;a class="anchor" href="#components">#&lt;/a>
+&lt;/h2>
+&lt;ul>
+&lt;li>A repository On Github&lt;/li>
+&lt;li>GitHub Codespaces to edit code&lt;/li>
+&lt;li>GitHub Actions for CICD
+&lt;ul>
+&lt;li>GitHub hosted runners&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Github Pages for web hosting&lt;/li>
+&lt;/ul>
+&lt;div class="pagebreak">&lt;/div>
+ &lt;/div>
+&lt;/div>
+
+&lt;h2 id="yaml-yaml-and-more-yaml">
+ YAML, YAML, and more YAML
+ &lt;a class="anchor" href="#yaml-yaml-and-more-yaml">#&lt;/a>
+&lt;/h2>
+&lt;div class="slide">
+ &lt;div class="slide-nav">
+ 
+
+ 
+ &lt;a rel="noopener" class="book-btn prevSegment">
+ Back
+ &lt;/a>
+ 
+
+ 
+
+ 
+ &lt;a rel="noopener" class="book-btn nextSegment" style="position: absolute; right:0">
+ Next
+ &lt;/a>
+ 
+
+ 
+ &lt;/br>
+ &lt;/div>
+
+ &lt;div class="slide-content">
+ &lt;p>GitHub Actions relies heavily on YAML for defining the work to be done.&lt;/p></description></item><item><title>1 - Create the Repository</title><link>https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/1-create-repo/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/1-create-repo/</guid><description>&lt;h1 id="step-1-create-the-repository">
+ Step 1: Create the Repository
+ &lt;a class="anchor" href="#step-1-create-the-repository">#&lt;/a>
+&lt;/h1>
+&lt;div class="slide">
+ &lt;div class="slide-nav">
+ 
+
+ 
+
+ 
+ &lt;a href="https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/preamble" class="book-btn prevSegment">
+ Back
+ &lt;/a>
+ 
+
+ 
+ &lt;a rel="noopener" class="book-btn nextSegment" style="position: absolute; right:0">
+ Next
+ &lt;/a>
+ 
+
+ 
+ &lt;/br>
+ &lt;/div>
+
+ &lt;div class="slide-content">
+ &lt;div class="book-columns flex flex-wrap" style="justify-content: center; align-items: center;">
+ &lt;div class="flex-even markdown-inner" style="flex-grow: 1; text-align: center;">
+&lt;figure>&lt;a href="https://whitefreeze801.github.io/workshop-learn-github-actions/credits">&lt;a href="https://whitefreeze801.github.io/workshop-learn-github-actions/credits">
+ &lt;img src="https://whitefreeze801.github.io/workshop-learn-github-actions/art/gray-dog-icons/turning.png" width="100%">&lt;/a>
+&lt;/figure>
+ &lt;/div>
+ &lt;div class="flex-even markdown-inner" style="flex-grow: 3; text-align: inherit;">
+&lt;p>First, you will need to create a new repository on GitHub. This repository will be used to store the code for the workshop and will
+be the repository which will run all the GitHub Actions and Workflows.&lt;/p>
+&lt;p>We are going to make a new repository using the GitHub web interface.&lt;/p></description></item><item><title>3 - First Workflow</title><link>https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/3-first-workflow/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/3-first-workflow/</guid><description>&lt;h1 id="first-workflow">
+ First Workflow
+ &lt;a class="anchor" href="#first-workflow">#&lt;/a>
+&lt;/h1>
+&lt;div class="slide">
+ &lt;div class="slide-nav">
+ 
+
+ 
+
+ 
+ &lt;a href="https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/2-introduction/" class="book-btn prevSegment">
+ Back
+ &lt;/a>
+ 
+
+ 
+ &lt;a rel="noopener" class="book-btn nextSegment" style="position: absolute; right:0">
+ Next
+ &lt;/a>
+ 
+
+ 
+ &lt;/br>
+ &lt;/div>
+
+ &lt;div class="slide-content">
+ &lt;div class="book-columns flex flex-wrap" style="justify-content: center; align-items: center;">
+ &lt;div class="flex-even markdown-inner" style="flex-grow: 1; text-align: center;">
+&lt;figure>&lt;a href="https://whitefreeze801.github.io/workshop-learn-github-actions/credits">&lt;a href="https://whitefreeze801.github.io/workshop-learn-github-actions/credits">
+ &lt;img src="https://whitefreeze801.github.io/workshop-learn-github-actions/art/bluegreen-dog-icons/turning.png" width="100%">&lt;/a>
+&lt;/figure>
+ &lt;/div>
+ &lt;div class="flex-even markdown-inner" style="flex-grow: 3; text-align: inherit;">
+&lt;p>Once you have the bootstrapped repository and workshop content from the &lt;a href="https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/1-create-repo/">Create Repo Page&lt;/a> you are ready
+to create your first GitHub Actions Workflow!&lt;/p>
+&lt;p>The general overview of this workflow:&lt;/p>
+&lt;ul>
+&lt;li>Run on push to the repository&lt;/li>
+&lt;li>Contains a single job which should
+&lt;ul>
+&lt;li>Clone the repo&lt;/li>
+&lt;li>Install &lt;code>hugo&lt;/code>&lt;/li>
+&lt;li>Build the site&lt;/li>
+&lt;li>(sometimes) Publish the site to GitHub Pages&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;div style="position: relative;">
+ &lt;div>
+ &lt;blockquote class="book-hint info">
+&lt;p>There are many, many more fields that are valid for workflows, jobs, and steps then we will
+cover here. &lt;a href="https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions">See the docs for all the options&lt;/a>&lt;/p></description></item><item><title>4 - Actions Deep Dive</title><link>https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/4-actions/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/4-actions/</guid><description>&lt;h1 id="actions">
+ Actions
+ &lt;a class="anchor" href="#actions">#&lt;/a>
+&lt;/h1>
+&lt;div class="slide">
+ &lt;div class="slide-nav">
+ 
+
+ 
+
+ 
+ &lt;a href="https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/3-first-workflow/" class="book-btn prevSegment">
+ Back
+ &lt;/a>
+ 
+
+ 
+ &lt;a rel="noopener" class="book-btn nextSegment" style="position: absolute; right:0">
+ Next
+ &lt;/a>
+ 
+
+ 
+ &lt;/br>
+ &lt;/div>
+
+ &lt;div class="slide-content">
+ &lt;div class="book-columns flex flex-wrap" style="justify-content: center; align-items: center;">
+ &lt;div class="flex-even markdown-inner" style="flex-grow: 1; text-align: center;">
+&lt;figure>&lt;a href="https://whitefreeze801.github.io/workshop-learn-github-actions/credits">&lt;a href="https://whitefreeze801.github.io/workshop-learn-github-actions/credits">
+ &lt;img src="https://whitefreeze801.github.io/workshop-learn-github-actions/art/bluegreen-dog-icons/turning.png" width="100%">&lt;/a>
+&lt;/figure>
+ &lt;/div>
+ &lt;div class="flex-even markdown-inner" style="flex-grow: 3; text-align: inherit;">
+&lt;p>At this point you should have public web page for the workshop built off your repository and
+hosted under your GitHub handle. This section of the workshop contains a deep dive on Actions.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Break down the actions currently in the &lt;code>CI/CD&lt;/code> workflow and job.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Guide you through two kinds of custom actions you can use to enhance your current workflow.&lt;/p></description></item><item><title>Closing</title><link>https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/closing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/closing/</guid><description>&lt;h1 id="closing">
+ Closing
+ &lt;a class="anchor" href="#closing">#&lt;/a>
+&lt;/h1>
+&lt;div class="slide">
+ &lt;div class="slide-nav">
+ 
+
+ 
+
+ 
+ &lt;a href="https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/4-actions" class="book-btn prevSegment">
+ Back
+ &lt;/a>
+ 
+
+ 
+ &lt;a rel="noopener" class="book-btn nextSegment" style="position: absolute; right:0">
+ Next
+ &lt;/a>
+ 
+
+ 
+ &lt;/br>
+ &lt;/div>
+
+ &lt;div class="slide-content">
+ &lt;div class="book-columns flex flex-wrap" style="justify-content: center; align-items: center;">
+ &lt;div class="flex-even markdown-inner" style="flex-grow: 3; text-align: center;">
+&lt;h2 id="success">
+ Success!
+ &lt;a class="anchor" href="#success">#&lt;/a>
+&lt;/h2>
+&lt;p>If you have reached this far then you should have a good grasp of the basic
+tools available to you in GitHub Actions.&lt;/p>
+&lt;h2 id="share-it">
+ Share it!
+ &lt;a class="anchor" href="#share-it">#&lt;/a>
+&lt;/h2>
+&lt;p>Be sure to share the link below so you can have someone else learn GitHub Actions
+by deploying the workshop you just deployed!&lt;/p></description></item></channel></rss>

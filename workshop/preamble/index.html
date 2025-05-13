@@ -1,0 +1,146 @@
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="
+  Workshop Preamble
+  #
+
+
+  
+    
+
+    
+
+    
+    
+      Back
+    
+    
+
+    
+    
+      Next
+    
+    
+
+    
+    
+  
+
+  
+    
+  
+    
+      
+        
+      
+    
+  
+  
+    
+Serverless!
+The workshop build process results in static assits. That allows them to be served
+as basic files out of a branch of the repository which means that no
+servers are required for you to share your deployment of the workshop.
+  
+
+
+  Architecture
+  #
+
+
+    
+
+
+  Components
+  #
+
+
+A repository On Github
+GitHub Codespaces to edit code
+GitHub Actions for CICD
+
+GitHub hosted runners
+
+
+Github Pages for web hosting
+
+
+  
+
+
+
+  YAML, YAML, and more YAML
+  #
+
+
+  
+    
+
+    
+    
+      Back
+    
+    
+
+    
+
+    
+    
+      Next
+    
+    
+
+    
+    
+  
+
+  
+    GitHub Actions relies heavily on YAML for defining the work to be done."><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/preamble/"><meta property="og:site_name" content="Learn GitHub Actions"><meta property="og:title" content="Preamble"><meta property="og:description" content="Workshop Preamble # Back Next Serverless!
+The workshop build process results in static assits. That allows them to be served as basic files out of a branch of the repository which means that no servers are required for you to share your deployment of the workshop.
+Architecture # Components # A repository On Github GitHub Codespaces to edit code GitHub Actions for CICD GitHub hosted runners Github Pages for web hosting YAML, YAML, and more YAML # Back Next GitHub Actions relies heavily on YAML for defining the work to be done."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="workshop"><title>Preamble | Learn GitHub Actions</title>
+<link rel=icon href=/workshop-learn-github-actions/favicon.png><link rel=manifest href=/workshop-learn-github-actions/manifest.json><link rel=canonical href=https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/preamble/><link rel=stylesheet href=/workshop-learn-github-actions/book.min.fe11eb3aae5dceb413595831f1d5c61da2c40744de928d128a40f38f45adf3e1.css integrity="sha256-/hHrOq5dzrQTWVgx8dXGHaLEB0Teko0SikDzj0Wt8+E=" crossorigin=anonymous></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/workshop-learn-github-actions/><span>Learn GitHub Actions</span></a></h2><ul><li><a href=/workshop-learn-github-actions/workshop/>Workshop</a><ul><li><a href=/workshop-learn-github-actions/workshop/preamble/ class=active>Preamble</a></li><li><a href=/workshop-learn-github-actions/workshop/1-create-repo/>1 - Create the Repository</a></li><li><a href=/workshop-learn-github-actions/workshop/2-introduction/>2 - Introducing GitHub Actions</a><ul></ul></li><li><a href=/workshop-learn-github-actions/workshop/3-first-workflow/>3 - First Workflow</a></li><li><a href=/workshop-learn-github-actions/workshop/4-actions/>4 - Actions Deep Dive</a></li><li><a href=/workshop-learn-github-actions/workshop/closing/>Closing</a></li></ul></li><li><a href=/workshop-learn-github-actions/credits/>Credits</a><ul></ul></li></ul><a href=https://whitefreeze801.github.io/workshop-learn-github-actions/credits#artist style=outline:none><figure><img src=https://whitefreeze801.github.io/workshop-learn-github-actions/art/bluegreen-dog-icons/paw.png style="width:100%;height:auto;opacity:1;filter:drop-shadow(5px 5px 5px #1f1f1f)"></figure></a></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/workshop-learn-github-actions/svg/menu.svg class=book-icon alt=Menu></label><h3>Preamble</h3><label for=toc-control><img src=/workshop-learn-github-actions/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#yaml-yaml-and-more-yaml>YAML, YAML, and more YAML</a></li><li><a href=#about-hugo---the-generator-for-this-site>About Hugo - The generator for this site</a></li><li><a href=#working-with-git-based-cicd>Working With <code>git</code> based CICD</a></li></ul></nav></aside></header><div class=slides><article class="markdown book-article"><h1 id=workshop-preamble>Workshop Preamble
+<a class=anchor href=#workshop-preamble>#</a></h1><div class=slide><div class=slide-nav><a href=https://whitefreeze801.github.io/workshop-learn-github-actions/workshop class="book-btn prevSegment">Back
+</a><a rel=noopener class="book-btn nextSegment" style=position:absolute;right:0>Next</a></br></div><div class=slide-content><div style=position:relative><div style=position:absolute;top:0;right:0><a href=https://whitefreeze801.github.io/workshop-learn-github-actions/credits#artist><figure style=padding:0;margin:0><img src=https://whitefreeze801.github.io/workshop-learn-github-actions/art/gray-dog-icons/head.png style=width:3em></figure></a></div><div><blockquote class="book-hint info"><p>Serverless!</p><p>The workshop build process results in static assits. That allows them to be served
+as basic files out of a branch of the repository which means that no
+servers are required for you to share your deployment of the workshop.</p></div></div><h2 id=architecture>Architecture
+<a class=anchor href=#architecture>#</a></h2><figure class=text-center><img src=https://whitefreeze801.github.io/workshop-learn-github-actions/diagrams/arch/arch.png width=100%></figure><h2 id=components>Components
+<a class=anchor href=#components>#</a></h2><ul><li>A repository On Github</li><li>GitHub Codespaces to edit code</li><li>GitHub Actions for CICD<ul><li>GitHub hosted runners</li></ul></li><li>Github Pages for web hosting</li></ul><div class=pagebreak></div></div></div><h2 id=yaml-yaml-and-more-yaml>YAML, YAML, and more YAML
+<a class=anchor href=#yaml-yaml-and-more-yaml>#</a></h2><div class=slide><div class=slide-nav><a rel=noopener class="book-btn prevSegment">Back
+</a><a rel=noopener class="book-btn nextSegment" style=position:absolute;right:0>Next</a></br></div><div class=slide-content><p>GitHub Actions relies heavily on YAML for defining the work to be done.</p><p>Some basic yaml features that will help you understand the files in this workshop</p><h2 id=a-basic-map-file>A basic map file
+<a class=anchor href=#a-basic-map-file>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>a</span>: <span style=color:#ae81ff>yaml</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>object</span>: <span style=color:#ae81ff>uses</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>colons</span>: <span style=color:#ae81ff>to separate keys and values</span>
+</span></span></code></pre></div><h2 id=a-with-a-key-that-is-a-list-of-strings>A with a key that is a list of strings
+<a class=anchor href=#a-with-a-key-that-is-a-list-of-strings>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>list-descr</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>a</span>
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>yaml</span>
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>list</span>
+</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>uses hypens to separate items</span>
+</span></span></code></pre></div><h2 id=a-map-with-a-key-that-is-a-list-of-maps>A map with a key that is a list of maps
+<a class=anchor href=#a-map-with-a-key-that-is-a-list-of-maps>#</a></h2><blockquote><p>Extra newlines are ignored in yaml so it is often used to help separate items in lists
+but both maps below are functionally identical.</p></blockquote><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>list-of-objects</span>:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>a</span>: <span style=color:#ae81ff>yaml</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>list</span>: <span style=color:#ae81ff>of objects</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>hypens</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>to</span>: <span style=color:#ae81ff>start new objects</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>list-of-objects</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>a</span>: <span style=color:#ae81ff>yaml</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>list</span>: <span style=color:#ae81ff>of objects</span>
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>hypens</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>to</span>: <span style=color:#ae81ff>start new objects</span>
+</span></span></code></pre></div><div class=pagebreak></div></div></div><h2 id=about-hugo---the-generator-for-this-site>About Hugo - The generator for this site
+<a class=anchor href=#about-hugo---the-generator-for-this-site>#</a></h2><div class=slide><div class=slide-nav><a rel=noopener class="book-btn prevSegment">Back
+</a><a rel=noopener class="book-btn nextSegment" style=position:absolute;right:0>Next</a></br></div><div class=slide-content><div class="book-columns flex flex-wrap" style=justify-content:center;align-items:center><div class="flex-even markdown-inner" style=flex-grow:1;text-align:center><figure class=text-center><img src=https://whitefreeze801.github.io/workshop-learn-github-actions/hugo-logo-512x512.png width=100%></figure></div><div class="flex-even markdown-inner" style=flex-grow:3;text-align:inherit><p>GitHub Actions (our CICD) and GitHub Pages (our hosting platorm) don&rsquo;t require you to use any particular language or tool.
+But this specific workshop is built on the wonderful, open-source <a href=https://gohugo.io/>Hugo</a> static site generator and the
+<a href=https://github.com/alex-shpak/hugo-book>hugo-book theme</a>.</p></div></div><div style=position:relative><div style=position:absolute;top:0;right:0><a href=https://whitefreeze801.github.io/workshop-learn-github-actions/credits#artist><figure style=padding:0;margin:0><img src=https://whitefreeze801.github.io/workshop-learn-github-actions/art/gray-dog-icons/head.png style=width:3em></figure></a></div><div><blockquote class="book-hint info"><h3 id=why-hugo>Why Hugo?
+<a class=anchor href=#why-hugo>#</a></h3><p>Hugo is a static website generator that takes in markdown files and uses templates to generate static assets that do not need any
+evaluation on the server-side. This makes it a perfect tool for generating blogs or other web sites. Static assets are also
+much more secure and easier to serve and are required if you want to host your site with GitHub Pages.</p></div></div><div class=pagebreak></div></div></div><h2 id=working-with-git-based-cicd>Working With <code>git</code> based CICD
+<a class=anchor href=#working-with-git-based-cicd>#</a></h2><div class=slide><div class=slide-nav><a rel=noopener class="book-btn prevSegment">Back
+</a><a href=https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/1-create-repo/ class=book-btn style=position:absolute;right:0>Next</a></br></div><div class=slide-content><p>Using yaml files and git to configure CICD comes with many, many benefits. But it can
+also be incredibly frustrating when you are going through the inevitable trial and error
+that is required when working through issues.</p><p>A few tips:</p><ul><li>Use the <code>git</code> CLI so you can automate changes</li><li><a href=https://guts-of-git.carson-anderson.com/>Learn how to use <code>git rebase -i</code> to clean up commits</a></li></ul><p>A simple one-liner to allow easy &ldquo;up and enter&rdquo; iteration is</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>git add -A; git commit -m <span style=color:#e6db74>&#34;fixup-</span><span style=color:#66d9ef>$(</span>date <span style=color:#e6db74>&#34;+%Y%m%dT%H%M%S&#34;</span><span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span>; git push
+</span></span></code></pre></div><p>You can make it into an easy alias with</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>alias fixup<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;git add -A; git commit -m &#34;fixup-$(date &#34;+%Y%m%dT%H%M%S&#34;)&#34;; git push&#39;</span>
+</span></span></code></pre></div><p>Now all you have to do to test a CICD change is type <code>fixup</code> and hit enter!</p><div class=pagebreak></div></div></div></article></div><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#yaml-yaml-and-more-yaml>YAML, YAML, and more YAML</a></li><li><a href=#about-hugo---the-generator-for-this-site>About Hugo - The generator for this site</a></li><li><a href=#working-with-git-based-cicd>Working With <code>git</code> based CICD</a></li></ul></nav></div></aside></main><script>for(var parent,style,children,j,childStyle,nextSegments,prevSegment,code=document.querySelectorAll("code.language-bash"),i=0;i<code.length;i++)parent=code[i].parentElement,style=parent.getAttribute("style"),style==null&&(style=""),parent.setAttribute("style",style+";font-size: large;border: 1px solid #404239; filter: drop-shadow(0 0 0.5rem #404239);");for(code=document.querySelectorAll("code.language-txt"),i=0;i<code.length;i++){parent=code[i].parentElement,style=parent.getAttribute("style"),style==null&&(style=""),parent.setAttribute("style",style+";background-color: #f5f5f5; color: #333");for(children=code[i].querySelectorAll("[style]"),j=0;j<children.length;j++)childStyle=children[j].getAttribute("style"),childStyle.indexOf("background-color")>-1&&(console.log("found background-color"),childStyle=childStyle+";background-color: #ddd; color: #333",children[j].setAttribute("style",childStyle))}get_next_heading=function(e){for(var t=e.nextElementSibling;t;){if(t.tagName=="H1"||t.tagName=="H2"||t.tagName=="H3"||t.tagName=="H4"||t.tagName=="H5"||t.tagName=="H6")return t;t=t.nextElementSibling}return null};for(nextSegments=document.getElementsByClassName("nextSegment"),i=0;i<nextSegments.length;i++){let s=nextSegments[i],t=s;for(;t&&!t.classList.contains("slide");)t=t.parentElement;let e=get_next_heading(t);if(e==null)break;s.addEventListener("click",function(){e.scrollIntoView(),e.scrollIntoView(),e.scrollBy(0,-500),window.location.hash=e.id});let n=e.innerText;n.endsWith(" #")&&(n=n.substring(0,n.length-2)),s.innerText=s.innerText+" ("+n+")"}for(prevSegment=document.getElementsByClassName("prevSegment"),i=0;i<prevSegment.length;i++)prevSegment[i].addEventListener("click",function(){console.log("BUTTON",this);for(var e,t=this.parentElement.parentElement.previousElementSibling;t;){if(t.classList.contains("slide"))for(e=t.previousElementSibling;e;){if(e.tagName=="H1"||e.tagName=="H2"||e.tagName=="H3"||e.tagName=="H4"||e.tagName=="H5"||e.tagName=="H6"){e.scrollIntoView(),e.scrollBy(0,-500),window.location.hash=e.id;return}e=e.previousElementSibling}t=t.previousElementSibling}})</script></body></html>

@@ -1,0 +1,117 @@
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="
+  Step 1: Create the Repository
+  #
+
+
+  
+    
+
+    
+
+    
+    
+      Back
+    
+    
+
+    
+    
+      Next
+    
+    
+
+    
+    
+  
+
+  
+    
+  
+
+    
+
+  
+  
+First, you will need to create a new repository on GitHub. This repository will be used to store the code for the workshop and will
+be the repository which will run all the GitHub Actions and Workflows.
+We are going to make a new repository using the GitHub web interface."><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/1-create-repo/"><meta property="og:site_name" content="Learn GitHub Actions"><meta property="og:title" content="1 - Create the Repository"><meta property="og:description" content="Step 1: Create the Repository # Back Next First, you will need to create a new repository on GitHub. This repository will be used to store the code for the workshop and will be the repository which will run all the GitHub Actions and Workflows.
+We are going to make a new repository using the GitHub web interface."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="workshop"><title>1 - Create the Repository | Learn GitHub Actions</title>
+<link rel=icon href=/workshop-learn-github-actions/favicon.png><link rel=manifest href=/workshop-learn-github-actions/manifest.json><link rel=canonical href=https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/1-create-repo/><link rel=stylesheet href=/workshop-learn-github-actions/book.min.fe11eb3aae5dceb413595831f1d5c61da2c40744de928d128a40f38f45adf3e1.css integrity="sha256-/hHrOq5dzrQTWVgx8dXGHaLEB0Teko0SikDzj0Wt8+E=" crossorigin=anonymous></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/workshop-learn-github-actions/><span>Learn GitHub Actions</span></a></h2><ul><li><a href=/workshop-learn-github-actions/workshop/>Workshop</a><ul><li><a href=/workshop-learn-github-actions/workshop/preamble/>Preamble</a></li><li><a href=/workshop-learn-github-actions/workshop/1-create-repo/ class=active>1 - Create the Repository</a></li><li><a href=/workshop-learn-github-actions/workshop/2-introduction/>2 - Introducing GitHub Actions</a><ul></ul></li><li><a href=/workshop-learn-github-actions/workshop/3-first-workflow/>3 - First Workflow</a></li><li><a href=/workshop-learn-github-actions/workshop/4-actions/>4 - Actions Deep Dive</a></li><li><a href=/workshop-learn-github-actions/workshop/closing/>Closing</a></li></ul></li><li><a href=/workshop-learn-github-actions/credits/>Credits</a><ul></ul></li></ul><a href=https://whitefreeze801.github.io/workshop-learn-github-actions/credits#artist style=outline:none><figure><img src=https://whitefreeze801.github.io/workshop-learn-github-actions/art/bluegreen-dog-icons/paw.png style="width:100%;height:auto;opacity:1;filter:drop-shadow(5px 5px 5px #1f1f1f)"></figure></a></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/workshop-learn-github-actions/svg/menu.svg class=book-icon alt=Menu></label><h3>1 - Create the Repository</h3><label for=toc-control><img src=/workshop-learn-github-actions/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#instructions>Instructions</a></li><li><a href=#launch-a-codespace-session-for-the-repository>Launch a codespace session for the repository</a></li><li><a href=#bootstrap-the-repository-contents>Bootstrap The Repository Contents</a></li><li><a href=#run-the-site-live>Run the site live</a><ul><li><a href=#fun-add-yourself-to-the-authors>Fun: Add yourself to the authors</a></li></ul></li><li><a href=#build-the-site>Build the site</a></li></ul></nav></aside></header><div class=slides><article class="markdown book-article"><h1 id=step-1-create-the-repository>Step 1: Create the Repository
+<a class=anchor href=#step-1-create-the-repository>#</a></h1><div class=slide><div class=slide-nav><a href=https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/preamble class="book-btn prevSegment">Back
+</a><a rel=noopener class="book-btn nextSegment" style=position:absolute;right:0>Next</a></br></div><div class=slide-content><div class="book-columns flex flex-wrap" style=justify-content:center;align-items:center><div class="flex-even markdown-inner" style=flex-grow:1;text-align:center><figure><a href=/credits><a href=/credits><img src=https://whitefreeze801.github.io/workshop-learn-github-actions/art/gray-dog-icons/turning.png width=100%></a></figure></div><div class="flex-even markdown-inner" style=flex-grow:3;text-align:inherit><p>First, you will need to create a new repository on GitHub. This repository will be used to store the code for the workshop and will
+be the repository which will run all the GitHub Actions and Workflows.</p><p>We are going to make a new repository using the GitHub web interface.</p></div></div><div style=position:relative><div><blockquote class="book-hint danger"><h2 id=if-you-want-to-follow-along-do-not-fork>If you want to follow along: do not fork
+<a class=anchor href=#if-you-want-to-follow-along-do-not-fork>#</a></h2><p>For the purposes of this workshop, start from a completely empty repository. While forking is normally fine, doing so will make
+it impossible to follow along in the workshop as it is designed.</p></div></div><div class=pagebreak></div></div></div><h2 id=instructions>Instructions
+<a class=anchor href=#instructions>#</a></h2><div class=slide><div class=slide-nav><a rel=noopener class="book-btn prevSegment">Back
+</a><a rel=noopener class="book-btn nextSegment" style=position:absolute;right:0>Next</a></br></div><div class=slide-content><p>Open up the <a href=https://github.com/new target=_blank>New Repository Page</a> and fill it out with these suggested settings:</p><ul><li>Template: <code>No Template</code><ul><li>This field may not exist for some users.</li></ul></li><li>Owner: <code>Your GitHub User</code></li><li>Name: <code>workshop-learn-github-actions</code><ul><li>This can be the same for everyone since it is namespaced under your user</li></ul></li><li>Visibility: <code>Public</code><ul><li>GitHub Actions are available to <em>both</em> public and private repositories, Each repository gets a number of free &ldquo;minutes&rdquo; of action time per month.</li><li>But, we will be using GitHub Pages to serve the static assets, which will require the repository to be public.</li></ul></li><li>Check the &ldquo;Add a README file&rdquo; box</li></ul><p>Everything else can be left unchecked. We will be bootstrapping the contents of the repo in a later step</p><p><img src=create-page.png alt="New Repository Setup Page"></p><div class=pagebreak></div></div></div><h2 id=launch-a-codespace-session-for-the-repository>Launch a codespace session for the repository
+<a class=anchor href=#launch-a-codespace-session-for-the-repository>#</a></h2><div class=slide><div class=slide-nav><a rel=noopener class="book-btn prevSegment">Back
+</a><a rel=noopener class="book-btn nextSegment" style=position:absolute;right:0>Next</a></br></div><div class=slide-content><ol><li>Open the repository in GitHub</li><li>Click the <code>Code</code> button
+<img src=code-button.png alt="code button"></li><li>Click the &ldquo;Codespaces tab&rdquo;</li><li>Click &ldquo;Create codespace on main&rdquo;
+<img src=codespace-on-main.png alt="codespace on main"></li><li>Wait for the page to load
+<img src=codespace.png alt="new codespace"></li></ol><div class=pagebreak></div></div></div><h2 id=bootstrap-the-repository-contents>Bootstrap The Repository Contents
+<a class=anchor href=#bootstrap-the-repository-contents>#</a></h2><div class=slide><div class=slide-nav><a rel=noopener class="book-btn prevSegment">Back
+</a><a rel=noopener class="book-btn nextSegment" style=position:absolute;right:0>Next</a></br></div><div class=slide-content><p>Use the terminal to download and extract the assets for the workshop</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>curl https://whitefreeze801.github.io/workshop-learn-github-actions/workshop-assets.tgz | tar -zxv
+</span></span></code></pre></div><ul><li>Alternatively, you can <a href=https://whitefreeze801.github.io/workshop-learn-github-actions/workshop-assets.tgz>click here download the assets</a> then right click in the file explorer and choose &ldquo;Upload&rdquo;, then run <code>tar -zxvf workshop-assets.tgz</code></li></ul><p>Once you are done you should see a lot of new files your your workspace.</p><p><img src=codespace-with-files.png alt="Codespace with files"></p><div class=pagebreak></div></div></div><h2 id=run-the-site-live>Run the site live
+<a class=anchor href=#run-the-site-live>#</a></h2><div class=slide><div class=slide-nav><a rel=noopener class="book-btn prevSegment">Back
+</a><a rel=noopener class="book-btn nextSegment" style=position:absolute;right:0>Next</a></br></div><div class=slide-content><p>The default codespace image comes with <code>hugo</code> pre-installed, but it does not have some features required by this site, so we need to install the extended edition:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>curl -L https://github.com/gohugoio/hugo/releases/download/v0.145.0/hugo_extended_0.145.0_linux-amd64.tar.gz | tar -zxv hugo
+</span></span></code></pre></div><p>Then run the version we installed:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>./hugo server
+</span></span></code></pre></div><div style=position:relative><div style=position:absolute;top:0;right:0><a href=https://whitefreeze801.github.io/workshop-learn-github-actions/credits#artist><figure style=padding:0;margin:0><img src=https://whitefreeze801.github.io/workshop-learn-github-actions/art/gray-dog-icons/head.png style=width:3em></figure></a></div><div><blockquote class="book-hint warning"><h3 id=false-404>False 404!
+<a class=anchor href=#false-404>#</a></h3><p>Codespaces is going to pop up a prompt to automatically forward you to the running server.</p><p>You <em>will</em> get a 404 by default. This is because you need to access the site under a base url
+instead of <code>/workshop-learn-github-actions</code></p><p>You must manually add the url base for the proxy to work!</p></div></div><p>Sample output</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-txt data-lang=txt><span style=display:flex><span>@carsonoid ➜ /workspaces/workshop-learn-github-actions (main) $ hugo server
+</span></span><span style=display:flex><span>Watching for changes in /workspaces/workshop-learn-github-actions/{content,data,layouts,static,themes}
+</span></span><span style=display:flex><span>Watching for config changes in /workspaces/workshop-learn-github-actions/config.toml
+</span></span><span style=display:flex><span>Start building sites … 
+</span></span><span style=display:flex><span>hugo v0.124.1-db083b05f16c945fec04f745f0ca8640560cf1ec linux/amd64 BuildDate=2024-03-20T11:40:10Z VendorInfo=gohugoio
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                   | EN  
+</span></span><span style=display:flex><span>-------------------+-----
+</span></span><span style=display:flex><span>  Pages            | 18  
+</span></span><span style=display:flex><span>  Paginator pages  |  0  
+</span></span><span style=display:flex><span>  Non-page files   |  3  
+</span></span><span style=display:flex><span>  Static files     | 78  
+</span></span><span style=display:flex><span>  Processed images |  0  
+</span></span><span style=display:flex><span>  Aliases          |  2  
+</span></span><span style=display:flex><span>  Cleaned          |  0  
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Built in 52 ms
+</span></span><span style=display:flex><span>Environment: &#34;development&#34;
+</span></span><span style=display:flex><span>Serving pages from disk
+</span></span><span style=display:flex><span>Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
+</span></span><span style=display:flex><span>Web Server is available at //localhost:1313/workshop-learn-github-actions/ (bind address 127.0.0.1) 
+</span></span><span style=display:flex><span>Press Ctrl+C to stop
+</span></span></code></pre></div><div class=pagebreak></div></div></div><h3 id=fun-add-yourself-to-the-authors>Fun: Add yourself to the authors
+<a class=anchor href=#fun-add-yourself-to-the-authors>#</a></h3><div class=slide><div class=slide-nav><a rel=noopener class="book-btn prevSegment">Back
+</a><a rel=noopener class="book-btn nextSegment" style=position:absolute;right:0>Next</a></br></div><div class=slide-content><p>Make your mark! Open up the <code>config.toml</code> and add a new line to the <code>authors</code> section:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-toml data-lang=toml><span style=display:flex><span>[<span style=color:#a6e22e>params</span>]
+</span></span><span style=display:flex><span>  <span style=color:#75715e># Add a name or alias to this list as you go through the workshop.</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>Authors</span> = [
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;Carson Anderson&#34;</span>
+</span></span><span style=display:flex><span>  ]
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-toml data-lang=toml><span style=display:flex><span>[<span style=color:#a6e22e>params</span>]
+</span></span><span style=display:flex><span>  <span style=color:#75715e># Add a name or alias to this list as you go through the workshop.</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>Authors</span> = [
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;Carson Anderson&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;Tami R&#34;</span>
+</span></span><span style=display:flex><span>  ]
+</span></span></code></pre></div><p>Then navigate to the &ldquo;Credits&rdquo; page on your proxy page and see that <code>hugo</code> has automatically rebuilt the site and you are now
+an author in the workshop chain!</p><div class=pagebreak></div></div></div><h2 id=build-the-site>Build the site
+<a class=anchor href=#build-the-site>#</a></h2><div class=slide><div class=slide-nav><a rel=noopener class="book-btn prevSegment">Back
+</a><a href=https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/2-introduction/ class=book-btn style=position:absolute;right:0>Next</a></br></div><div class=slide-content><p>Running <code>hugo server</code> builds the site for local viewing, but it does not build production-ready assets. To do that, simply run <code>hugo</code> without any arguments.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>./hugo
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-txt data-lang=txt><span style=display:flex><span>@carsonoid ➜ /workspaces/workshop-learn-github-actions (main) $ hugo
+</span></span><span style=display:flex><span>Start building sites … 
+</span></span><span style=display:flex><span>hugo v0.124.1-db083b05f16c945fec04f745f0ca8640560cf1ec linux/amd64 BuildDate=2024-03-20T11:40:10Z VendorInfo=gohugoio
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                   | EN  
+</span></span><span style=display:flex><span>-------------------+-----
+</span></span><span style=display:flex><span>  Pages            | 18  
+</span></span><span style=display:flex><span>  Paginator pages  |  0  
+</span></span><span style=display:flex><span>  Non-page files   |  3  
+</span></span><span style=display:flex><span>  Static files     | 78  
+</span></span><span style=display:flex><span>  Processed images |  0  
+</span></span><span style=display:flex><span>  Aliases          |  2  
+</span></span><span style=display:flex><span>  Cleaned          |  0  
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Total in 101 ms
+</span></span></code></pre></div><p>Success! Now we have a <code>public</code> directory inside the codespace that contains all the static web assets needed to serve our site.</p><div class=pagebreak></div></div></div></article></div><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#instructions>Instructions</a></li><li><a href=#launch-a-codespace-session-for-the-repository>Launch a codespace session for the repository</a></li><li><a href=#bootstrap-the-repository-contents>Bootstrap The Repository Contents</a></li><li><a href=#run-the-site-live>Run the site live</a><ul><li><a href=#fun-add-yourself-to-the-authors>Fun: Add yourself to the authors</a></li></ul></li><li><a href=#build-the-site>Build the site</a></li></ul></nav></div></aside></main><script>for(var parent,style,children,j,childStyle,nextSegments,prevSegment,code=document.querySelectorAll("code.language-bash"),i=0;i<code.length;i++)parent=code[i].parentElement,style=parent.getAttribute("style"),style==null&&(style=""),parent.setAttribute("style",style+";font-size: large;border: 1px solid #404239; filter: drop-shadow(0 0 0.5rem #404239);");for(code=document.querySelectorAll("code.language-txt"),i=0;i<code.length;i++){parent=code[i].parentElement,style=parent.getAttribute("style"),style==null&&(style=""),parent.setAttribute("style",style+";background-color: #f5f5f5; color: #333");for(children=code[i].querySelectorAll("[style]"),j=0;j<children.length;j++)childStyle=children[j].getAttribute("style"),childStyle.indexOf("background-color")>-1&&(console.log("found background-color"),childStyle=childStyle+";background-color: #ddd; color: #333",children[j].setAttribute("style",childStyle))}get_next_heading=function(e){for(var t=e.nextElementSibling;t;){if(t.tagName=="H1"||t.tagName=="H2"||t.tagName=="H3"||t.tagName=="H4"||t.tagName=="H5"||t.tagName=="H6")return t;t=t.nextElementSibling}return null};for(nextSegments=document.getElementsByClassName("nextSegment"),i=0;i<nextSegments.length;i++){let s=nextSegments[i],t=s;for(;t&&!t.classList.contains("slide");)t=t.parentElement;let e=get_next_heading(t);if(e==null)break;s.addEventListener("click",function(){e.scrollIntoView(),e.scrollIntoView(),e.scrollBy(0,-500),window.location.hash=e.id});let n=e.innerText;n.endsWith(" #")&&(n=n.substring(0,n.length-2)),s.innerText=s.innerText+" ("+n+")"}for(prevSegment=document.getElementsByClassName("prevSegment"),i=0;i<prevSegment.length;i++)prevSegment[i].addEventListener("click",function(){console.log("BUTTON",this);for(var e,t=this.parentElement.parentElement.previousElementSibling;t;){if(t.classList.contains("slide"))for(e=t.previousElementSibling;e;){if(e.tagName=="H1"||e.tagName=="H2"||e.tagName=="H3"||e.tagName=="H4"||e.tagName=="H5"||e.tagName=="H6"){e.scrollIntoView(),e.scrollBy(0,-500),window.location.hash=e.id;return}e=e.previousElementSibling}t=t.previousElementSibling}})</script></body></html>

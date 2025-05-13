@@ -1,0 +1,15 @@
+{
+  "name": "Learn GitHub Actions",
+  "short_name": "Learn GitHub Actions",
+  "start_url": "/workshop-learn-github-actions/",
+  "scope": "/workshop-learn-github-actions/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/workshop-learn-github-actions/favicon.svg",
+      "sizes": "512x512"
+    }
+  ]
+}

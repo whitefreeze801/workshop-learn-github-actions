@@ -1,0 +1,269 @@
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="
+  First Workflow
+  #
+
+
+  
+    
+
+    
+
+    
+    
+      Back
+    
+    
+
+    
+    
+      Next
+    
+    
+
+    
+    
+  
+
+  
+    
+  
+
+    
+
+  
+  
+Once you have the bootstrapped repository and workshop content from the Create Repo Page you are ready
+to create your first GitHub Actions Workflow!
+The general overview of this workflow:
+
+Run on push to the repository
+Contains a single job which should
+
+Clone the repo
+Install hugo
+Build the site
+(sometimes) Publish the site to GitHub Pages
+
+
+
+
+  
+    
+There are many, many more fields that are valid for workflows, jobs, and steps then we will
+cover here. See the docs for all the options"><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/3-first-workflow/"><meta property="og:site_name" content="Learn GitHub Actions"><meta property="og:title" content="3 - First Workflow"><meta property="og:description" content="First Workflow # Back Next Once you have the bootstrapped repository and workshop content from the Create Repo Page you are ready to create your first GitHub Actions Workflow!
+The general overview of this workflow:
+Run on push to the repository Contains a single job which should Clone the repo Install hugo Build the site (sometimes) Publish the site to GitHub Pages There are many, many more fields that are valid for workflows, jobs, and steps then we will cover here. See the docs for all the options"><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="workshop"><title>3 - First Workflow | Learn GitHub Actions</title>
+<link rel=icon href=/workshop-learn-github-actions/favicon.png><link rel=manifest href=/workshop-learn-github-actions/manifest.json><link rel=canonical href=https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/3-first-workflow/><link rel=stylesheet href=/workshop-learn-github-actions/book.min.fe11eb3aae5dceb413595831f1d5c61da2c40744de928d128a40f38f45adf3e1.css integrity="sha256-/hHrOq5dzrQTWVgx8dXGHaLEB0Teko0SikDzj0Wt8+E=" crossorigin=anonymous></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/workshop-learn-github-actions/><span>Learn GitHub Actions</span></a></h2><ul><li><a href=/workshop-learn-github-actions/workshop/>Workshop</a><ul><li><a href=/workshop-learn-github-actions/workshop/preamble/>Preamble</a></li><li><a href=/workshop-learn-github-actions/workshop/1-create-repo/>1 - Create the Repository</a></li><li><a href=/workshop-learn-github-actions/workshop/2-introduction/>2 - Introducing GitHub Actions</a><ul></ul></li><li><a href=/workshop-learn-github-actions/workshop/3-first-workflow/ class=active>3 - First Workflow</a></li><li><a href=/workshop-learn-github-actions/workshop/4-actions/>4 - Actions Deep Dive</a></li><li><a href=/workshop-learn-github-actions/workshop/closing/>Closing</a></li></ul></li><li><a href=/workshop-learn-github-actions/credits/>Credits</a><ul></ul></li></ul><a href=https://whitefreeze801.github.io/workshop-learn-github-actions/credits#artist style=outline:none><figure><img src=https://whitefreeze801.github.io/workshop-learn-github-actions/art/bluegreen-dog-icons/paw.png style="width:100%;height:auto;opacity:1;filter:drop-shadow(5px 5px 5px #1f1f1f)"></figure></a></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/workshop-learn-github-actions/svg/menu.svg class=book-icon alt=Menu></label><h3>3 - First Workflow</h3><label for=toc-control><img src=/workshop-learn-github-actions/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#create-the-workflow>Create the workflow</a><ul><li><a href=#add-the-workflow-name-and-trigger>Add the workflow name and trigger</a></li><li><a href=#add-the-build-job>Add the build job</a></li><li><a href=#add-the-checkout-step>Add the checkout step</a></li><li><a href=#add-the-hugo-install-step>Add the hugo install step</a></li><li><a href=#add-the-build-step>Add the build step</a></li><li><a href=#add-the-deploy-step>Add the deploy step</a></li><li><a href=#full-final-workflow-yaml>Full final workflow yaml</a></li></ul></li><li><a href=#now-run-it>Now run it!</a></li><li><a href=#watching-a-workflow>Watching a workflow</a></li><li><a href=#check-for-the-deploy-workflow>Check for the deploy workflow</a></li><li><a href=#enable-github-pages>Enable GitHub Pages</a></li></ul></nav></aside></header><div class=slides><article class="markdown book-article"><h1 id=first-workflow>First Workflow
+<a class=anchor href=#first-workflow>#</a></h1><div class=slide><div class=slide-nav><a href=https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/2-introduction/ class="book-btn prevSegment">Back
+</a><a rel=noopener class="book-btn nextSegment" style=position:absolute;right:0>Next</a></br></div><div class=slide-content><div class="book-columns flex flex-wrap" style=justify-content:center;align-items:center><div class="flex-even markdown-inner" style=flex-grow:1;text-align:center><figure><a href=/credits><a href=/credits><img src=https://whitefreeze801.github.io/workshop-learn-github-actions/art/bluegreen-dog-icons/turning.png width=100%></a></figure></div><div class="flex-even markdown-inner" style=flex-grow:3;text-align:inherit><p>Once you have the bootstrapped repository and workshop content from the <a href=https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/1-create-repo/>Create Repo Page</a> you are ready
+to create your first GitHub Actions Workflow!</p><p>The general overview of this workflow:</p><ul><li>Run on push to the repository</li><li>Contains a single job which should<ul><li>Clone the repo</li><li>Install <code>hugo</code></li><li>Build the site</li><li>(sometimes) Publish the site to GitHub Pages</li></ul></li></ul><div style=position:relative><div><blockquote class="book-hint info"><p>There are many, many more fields that are valid for workflows, jobs, and steps then we will
+cover here. <a href=https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions>See the docs for all the options</a></p></div></div></div></div><div class=pagebreak></div></div></div><h2 id=create-the-workflow>Create the workflow
+<a class=anchor href=#create-the-workflow>#</a></h2><div class=slide><div class=slide-nav><a rel=noopener class="book-btn prevSegment">Back
+</a><a rel=noopener class="book-btn nextSegment" style=position:absolute;right:0>Next</a></br></div><div class=slide-content><p>Defining a workflow with GitHub actions is easy as making a file! Do the following
+inside your code space:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>mkdir -p .github/workflows
+</span></span><span style=display:flex><span>touch .github/workflows/cicd.yaml
+</span></span></code></pre></div><p>Or</p><p>Right Click in the explorer and click &ldquo;New File&rdquo; and type <code>.github/workflows/cicd.yaml</code></p><div style=position:relative><div style=position:absolute;top:0;right:0><a href=https://whitefreeze801.github.io/workshop-learn-github-actions/credits#artist><figure style=padding:0;margin:0><img src=https://whitefreeze801.github.io/workshop-learn-github-actions/art/gray-dog-icons/head.png style=width:3em></figure></a></div><div><blockquote class="book-hint warning"><p><strong>The folder names matter</strong></p><p>The file name for a workflow file can by anything. But it <em>must</em> be in a directory at the root of the repo
+that exactly matches the name <code>.github/workflows</code> for the file to be discovered.</p></div></div><div class=pagebreak></div></div></div><h3 id=add-the-workflow-name-and-trigger>Add the workflow name and trigger
+<a class=anchor href=#add-the-workflow-name-and-trigger>#</a></h3><div class=slide><div class=slide-nav><a rel=noopener class="book-btn prevSegment">Back
+</a><a rel=noopener class="book-btn nextSegment" style=position:absolute;right:0>Next</a></br></div><div class=slide-content><p>Here is the start to our new workflow:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>CI/CD</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on</span>: <span style=color:#ae81ff>push</span>
+</span></span></code></pre></div><hr><ul><li>The <a href=https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#name>name field</a> is optional and can be whatever you want. But it will be used in the GitHub UI in many places so a short human-friendly name is best.</li><li>The <a href=https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#on>on field</a> is where you define the conditions under which your workflow runs.<ul><li>We will just use <code>on: push</code> to have the workflow trigger whenver <em>any</em> commits or tags are pushed.</li></ul></li><li>The <code>jobs</code> field is where all jobs are defined, it is empty for now but we will add the first job in the next step</li></ul><div class=pagebreak></div></div></div><h3 id=add-the-build-job>Add the build job
+<a class=anchor href=#add-the-build-job>#</a></h3><div class=slide><div class=slide-nav><a rel=noopener class="book-btn prevSegment">Back
+</a><a rel=noopener class="book-btn nextSegment" style=position:absolute;right:0>Next</a></br></div><div class=slide-content><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>CI/CD</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on</span>: <span style=color:#ae81ff>push</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>build-site</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build Site</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>permissions</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>contents</span>: <span style=color:#ae81ff>write</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>: <span style=color:#75715e># TODO:</span>
+</span></span></code></pre></div><hr><p>The <code>jobs</code> field of the workflow is a <code>map</code> of job ids to job descriptions. We have
+defined a single job with the <code>id</code> of <code>build</code></p><ul><li>The <a href=https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#jobsjob_idname>name</a> field is used to give our job a more human-readable name</li><li>The <a href=https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#jobsjob_idruns-on>runs-on</a> field is required. It tells the actions information
+about the kind of runner the job needs.<ul><li>We are using <code>ubuntu-20.04</code> which is a <a href=https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions>GitHub Hosted Runner</a>. There are many other kinds of runner, including custom runners (not covered in this workshop)</li></ul></li><li>The <a href=https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#permissions>permissions</a> field defines custom permissions this workflow will need on our repo.<ul><li>This field is optional and the default is normally only <code>contents: write</code>. This workflow is going to need to push the static site content to a branch of the repository, so we need to give it extra permissions.</li></ul></li><li>The <code>steps</code> field is empty for now, but we will put all our job steps there in the next section.</li></ul><div class=pagebreak></div></div></div><h3 id=add-the-checkout-step>Add the checkout step
+<a class=anchor href=#add-the-checkout-step>#</a></h3><div class=slide><div class=slide-nav><a rel=noopener class="book-btn prevSegment">Back
+</a><a rel=noopener class="book-btn nextSegment" style=position:absolute;right:0>Next</a></br></div><div class=slide-content><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>CI/CD</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on</span>: <span style=color:#ae81ff>push</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>build-site</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build Site</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>permissions</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>contents</span>: <span style=color:#ae81ff>write</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Checkout</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/checkout@v3</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>submodules</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>fetch-depth</span>: <span style=color:#ae81ff>0</span>
+</span></span></code></pre></div><hr><p>Remember: Each job starts with an empty workspace. So, if we want to build
+our static web site from the workshop code, we need to first clone the repository
+from GitHub.</p><p>We can do this with the <code>actions/checkout</code> action which is an offical action <a href=https://github.com/actions/checkout>provided and maintained by GitHub directly</a>.
+You can see all other available <code>with</code> options in the repo or <a href=https://github.com/marketplace/actions/checkout>marketplace page</a>.</p><p>Things to note about this action:</p><ol><li>It references a github repository by name using the <code>uses</code> field<ul><li>It is pinned to a specific tag in the by using the <code>@</code> sign in the action names. This is required, GitHub actions does not have an automatic &ldquo;latest&rdquo; tag for actions. (this is a good thing!)</li><li>We will go over other ways to reference actions in the <a href=/workshop/4-actions/>deep dive on Actions</a></li></ul></li><li>We use the <code>submodules: true</code> to tell the action to automatically sync the &ldquo;theme&rdquo; submodule.</li><li>We use <code>fetch-depth: 0</code> to tell the action to not clone the entire git history, just the latest files.</li></ol><div class=pagebreak></div></div></div><h3 id=add-the-hugo-install-step>Add the hugo install step
+<a class=anchor href=#add-the-hugo-install-step>#</a></h3><div class=slide><div class=slide-nav><a rel=noopener class="book-btn prevSegment">Back
+</a><a rel=noopener class="book-btn nextSegment" style=position:absolute;right:0>Next</a></br></div><div class=slide-content><p>Our next step leverages a community provided action. These work the same way as official GitHub Actions. This action
+encapsulates installing hugo into the runner so it is available to later steps.</p><p>Again, note how we are using <code>with</code> to customize the behavior of the action. Available inputs to this action are
+documented in the <a href=https://github.com/peaceiris/actions-hugo>repo for the action</a> which is also surfaced in the
+<a href=https://github.com/marketplace/actions/hugo-setup>GitHub Actions Marketplace</a></p><div style=position:relative><div style=position:absolute;top:0;right:0><a href=https://whitefreeze801.github.io/workshop-learn-github-actions/credits#artist><figure style=padding:0;margin:0><img src=https://whitefreeze801.github.io/workshop-learn-github-actions/art/gray-dog-icons/head.png style=width:3em></figure></a></div><div><blockquote class="book-hint alert"><h1 id=be-careful>Be Careful!
+<a class=anchor href=#be-careful>#</a></h1><p>While it is common to use community actions, be aware that you are effectively running 3rd party
+code in the runner. That code will have access to any repository secrets, runtime environments, and
+files that you have set up in the job.</p><p>Best-practice is to fully vet the code before using it. Just as you would with 3rd party dependencies in your code base.</p></div></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>CI/CD</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on</span>: <span style=color:#ae81ff>push</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>build-site</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build Site</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>permissions</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>contents</span>: <span style=color:#ae81ff>write</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Checkout</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/checkout@v3</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>submodules</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>fetch-depth</span>: <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Setup Hugo</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-hugo@v3</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>hugo-version</span>: <span style=color:#e6db74>&#39;latest&#39;</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>extended</span>: <span style=color:#66d9ef>true</span>
+</span></span></code></pre></div><div class=pagebreak></div></div></div><h3 id=add-the-build-step>Add the build step
+<a class=anchor href=#add-the-build-step>#</a></h3><div class=slide><div class=slide-nav><a rel=noopener class="book-btn prevSegment">Back
+</a><a rel=noopener class="book-btn nextSegment" style=position:absolute;right:0>Next</a></br></div><div class=slide-content><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>CI/CD</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on</span>: <span style=color:#ae81ff>push</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>build-site</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build Site</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>permissions</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>contents</span>: <span style=color:#ae81ff>write</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Checkout</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/checkout@v3</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>submodules</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>fetch-depth</span>: <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Setup Hugo</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-hugo@v3</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>hugo-version</span>: <span style=color:#e6db74>&#39;latest&#39;</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>extended</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          # make the assets tgz users need to bootstrap the workshop
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          make workshop-assets
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          # there is no built-in env variable for the repo name without owner, so we have to parse it out
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          REPO_NAME=$(echo &#34;${GITHUB_REPOSITORY}&#34; | cut -d&#39;/&#39; -f2)
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          hugo --minify -b &#34;https://${GITHUB_REPOSITORY_OWNER}.github.io/$REPO_NAME/&#34;</span>
+</span></span></code></pre></div><div class=pagebreak></div></div></div><h3 id=add-the-deploy-step>Add the deploy step
+<a class=anchor href=#add-the-deploy-step>#</a></h3><div class=slide><div class=slide-nav><a rel=noopener class="book-btn prevSegment">Back
+</a><a rel=noopener class="book-btn nextSegment" style=position:absolute;right:0>Next</a></br></div><div class=slide-content><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>CI/CD</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on</span>: <span style=color:#ae81ff>push</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>build-site</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build Site</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>permissions</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>contents</span>: <span style=color:#ae81ff>write</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Checkout</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/checkout@v3</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>submodules</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>fetch-depth</span>: <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Setup Hugo</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-hugo@v3</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>hugo-version</span>: <span style=color:#e6db74>&#39;latest&#39;</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>extended</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          # make the assets tgz users need to bootstrap the workshop
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          make workshop-assets
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          # there is no built-in env variable for the repo name without owner, so we have to parse it out
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          REPO_NAME=$(echo &#34;${GITHUB_REPOSITORY}&#34; | cut -d&#39;/&#39; -f2)
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          hugo --minify -b &#34;https://${GITHUB_REPOSITORY_OWNER}.github.io/$REPO_NAME/&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Deploy</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>if</span>: <span style=color:#ae81ff>github.ref == &#39;refs/heads/main&#39; || github.ref == &#39;refs/heads/init&#39;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-gh-pages@v3</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>github_token</span>: <span style=color:#ae81ff>${{ secrets.GITHUB_TOKEN }}</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>publish_dir</span>: <span style=color:#ae81ff>./public</span>
+</span></span></code></pre></div><div class=pagebreak></div></div></div><h3 id=full-final-workflow-yaml>Full final workflow yaml
+<a class=anchor href=#full-final-workflow-yaml>#</a></h3><div class=slide><div class=slide-nav><a rel=noopener class="book-btn prevSegment">Back
+</a><a rel=noopener class="book-btn nextSegment" style=position:absolute;right:0>Next</a></br></div><div class=slide-content><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>CI/CD</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on</span>: <span style=color:#ae81ff>push</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>build-site</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build Site</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>permissions</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>contents</span>: <span style=color:#ae81ff>write</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Checkout</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/checkout@v3</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>submodules</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>fetch-depth</span>: <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Setup Hugo</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-hugo@v3</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>hugo-version</span>: <span style=color:#e6db74>&#39;latest&#39;</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>extended</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          # make the assets tgz users need to bootstrap the workshop
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          make workshop-assets
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          # there is no built-in env variable for the repo name without owner, so we have to parse it out
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          REPO_NAME=$(echo &#34;${GITHUB_REPOSITORY}&#34; | cut -d&#39;/&#39; -f2)
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          hugo --minify -b &#34;https://${GITHUB_REPOSITORY_OWNER}.github.io/$REPO_NAME/&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Deploy</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>if</span>: <span style=color:#ae81ff>github.ref == &#39;refs/heads/main&#39; || github.ref == &#39;refs/heads/init&#39;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-gh-pages@v3</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>github_token</span>: <span style=color:#ae81ff>${{ secrets.GITHUB_TOKEN }}</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>publish_dir</span>: <span style=color:#ae81ff>./public</span>
+</span></span></code></pre></div><div class=pagebreak></div></div></div><h2 id=now-run-it>Now run it!
+<a class=anchor href=#now-run-it>#</a></h2><div class=slide><div class=slide-nav><a rel=noopener class="book-btn prevSegment">Back
+</a><a rel=noopener class="book-btn nextSegment" style=position:absolute;right:0>Next</a></br></div><div class=slide-content><p>Because our workflow is set up to trigger on <code>push</code> all we have to do to kick it off
+is to simply create a new commit and <code>push</code> it to GitHub.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>git checkout -b init
+</span></span><span style=display:flex><span>git add .
+</span></span><span style=display:flex><span>git commit -m <span style=color:#e6db74>&#34;feat: initial add&#34;</span>
+</span></span><span style=display:flex><span>git push -u origin HEAD
+</span></span></code></pre></div><p>Ok&mldr; now what? We pushed the update but how do we know if it is working?</p><div class=pagebreak></div></div></div><h2 id=watching-a-workflow>Watching a workflow
+<a class=anchor href=#watching-a-workflow>#</a></h2><div class=slide><div class=slide-nav><a rel=noopener class="book-btn prevSegment">Back</a></br></div><div class=slide-content><p>Luckily, GitHub provides a very useful UI to help us track workflows and check
+the status of the jobs. It can be found under the <code>Actions</code> tab on the repository&rsquo;s
+GitHub page.</p><p><img src=actions-page.png alt="actions page"></p><div class=pagebreak></div></div></div><h2 id=check-for-the-deploy-workflow>Check for the deploy workflow
+<a class=anchor href=#check-for-the-deploy-workflow>#</a></h2><div class=slide><div class=slide-nav><a rel=noopener class="book-btn prevSegment">Back
+</a><a rel=noopener class="book-btn nextSegment" style=position:absolute;right:0>Next</a></br></div><div class=slide-content><p>If everything went well, then you should be able to refresh the <code>Actions</code> tab
+and see a second workflow that was automatically triggered by the push to the <code>gh-pages</code>
+branch that was done by <code>peaceiris/actions-gh-pages@v3</code></p><p><img src=deploy-action-log.png alt="deploy action log"></p><p><img src=pages-build-deployment.png alt="automatic pages build workflow"></p><blockquote><p>Take some time to click around in the actions UI there is a lot of information and other features
+of the platform surfaced on this page.</p></blockquote><div class=pagebreak></div></div></div><h2 id=enable-github-pages>Enable GitHub Pages
+<a class=anchor href=#enable-github-pages>#</a></h2><div class=slide><div class=slide-nav><a rel=noopener class="book-btn prevSegment">Back
+</a><a href=https://whitefreeze801.github.io/workshop-learn-github-actions/workshop/4-actions class=book-btn style=position:absolute;right:0>Next</a></br></div><div class=slide-content><ol><li>Click on the &ldquo;Settings&rdquo; tab</li><li>Click on &ldquo;Pages&rdquo;</li><li>Under &ldquo;branch&rdquo; choose the <code>gh-pages</code> branch that was created by the <code>Publish</code> step</li><li>Click &ldquo;Save&rdquo;</li></ol><p><img src=settings.png alt=settings></p><p>Now navigate back to the &ldquo;Actions&rdquo; tab and you should see a new workflow</p><p><img src=publish-workflow.png alt="new workflow"></p><p>If you click on it you will see a good example of a more complicated workflow with multiple nested
+jobs. This is what GitHub uses to actually process pushes to the pages branch to their serving infrastructure.</p><p><img src=pages-workflow.png alt="Pages workflow"></p><div class=pagebreak></div></div></div></article></div><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#create-the-workflow>Create the workflow</a><ul><li><a href=#add-the-workflow-name-and-trigger>Add the workflow name and trigger</a></li><li><a href=#add-the-build-job>Add the build job</a></li><li><a href=#add-the-checkout-step>Add the checkout step</a></li><li><a href=#add-the-hugo-install-step>Add the hugo install step</a></li><li><a href=#add-the-build-step>Add the build step</a></li><li><a href=#add-the-deploy-step>Add the deploy step</a></li><li><a href=#full-final-workflow-yaml>Full final workflow yaml</a></li></ul></li><li><a href=#now-run-it>Now run it!</a></li><li><a href=#watching-a-workflow>Watching a workflow</a></li><li><a href=#check-for-the-deploy-workflow>Check for the deploy workflow</a></li><li><a href=#enable-github-pages>Enable GitHub Pages</a></li></ul></nav></div></aside></main><script>for(var parent,style,children,j,childStyle,nextSegments,prevSegment,code=document.querySelectorAll("code.language-bash"),i=0;i<code.length;i++)parent=code[i].parentElement,style=parent.getAttribute("style"),style==null&&(style=""),parent.setAttribute("style",style+";font-size: large;border: 1px solid #404239; filter: drop-shadow(0 0 0.5rem #404239);");for(code=document.querySelectorAll("code.language-txt"),i=0;i<code.length;i++){parent=code[i].parentElement,style=parent.getAttribute("style"),style==null&&(style=""),parent.setAttribute("style",style+";background-color: #f5f5f5; color: #333");for(children=code[i].querySelectorAll("[style]"),j=0;j<children.length;j++)childStyle=children[j].getAttribute("style"),childStyle.indexOf("background-color")>-1&&(console.log("found background-color"),childStyle=childStyle+";background-color: #ddd; color: #333",children[j].setAttribute("style",childStyle))}get_next_heading=function(e){for(var t=e.nextElementSibling;t;){if(t.tagName=="H1"||t.tagName=="H2"||t.tagName=="H3"||t.tagName=="H4"||t.tagName=="H5"||t.tagName=="H6")return t;t=t.nextElementSibling}return null};for(nextSegments=document.getElementsByClassName("nextSegment"),i=0;i<nextSegments.length;i++){let s=nextSegments[i],t=s;for(;t&&!t.classList.contains("slide");)t=t.parentElement;let e=get_next_heading(t);if(e==null)break;s.addEventListener("click",function(){e.scrollIntoView(),e.scrollIntoView(),e.scrollBy(0,-500),window.location.hash=e.id});let n=e.innerText;n.endsWith(" #")&&(n=n.substring(0,n.length-2)),s.innerText=s.innerText+" ("+n+")"}for(prevSegment=document.getElementsByClassName("prevSegment"),i=0;i<prevSegment.length;i++)prevSegment[i].addEventListener("click",function(){console.log("BUTTON",this);for(var e,t=this.parentElement.parentElement.previousElementSibling;t;){if(t.classList.contains("slide"))for(e=t.previousElementSibling;e;){if(e.tagName=="H1"||e.tagName=="H2"||e.tagName=="H3"||e.tagName=="H4"||e.tagName=="H5"||e.tagName=="H6"){e.scrollIntoView(),e.scrollBy(0,-500),window.location.hash=e.id;return}e=e.previousElementSibling}t=t.previousElementSibling}})</script></body></html>
